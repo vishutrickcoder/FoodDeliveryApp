@@ -19,7 +19,7 @@ const loginUser = async (req, res) => {
         }
 
         const token = createToken(user._id)
-        res.json({success:true , token})
+        res.json({success:true , token , message:"You are Logged In"})
     } catch (error) {
         console.log(error)
         res.json({success:false , message:"Something went wrong"})  

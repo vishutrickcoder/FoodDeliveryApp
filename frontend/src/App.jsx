@@ -9,6 +9,9 @@ import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
 import Footer from './components/Footer/Footer'
 import LoginPopUp from './components/LoginPopUp/LoginPopUp'
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
 
@@ -16,6 +19,7 @@ function App() {
 
   return (
     <>
+    <ToastContainer />
     {showLogIn ? <LoginPopUp setShowLogIn={setShowLogIn}/> : <></>}
     <div className='app'>
       <Navbar setShowLogIn={setShowLogIn} />
