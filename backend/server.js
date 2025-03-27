@@ -3,7 +3,7 @@ import cors from 'cors'
 import { connectDb } from './config/db.js'
 import foodRouter from './routes/foodRoute.js'
 import path from 'path';
-
+import { fileURLToPath } from 'url';
 import dotenv from "dotenv";
 import userRouter from './routes/userRoute.js';
 import cartRoute from './routes/cartRoute.js';
@@ -13,6 +13,11 @@ dotenv.config()
 // App Config
 const app = express()
 const port = 4000
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 // middleware
 app.use(express.json())
