@@ -22,7 +22,9 @@ connectDb()
 
 // Api endPoint 
 app.use("/api/food",foodRouter)
-app.use("/images", express.static('uploads'))
+// app.use("/images", express.static('uploads'))
+app.use("/images", express.static(path.join(__dirname, "uploads")));
+
 app.use("/api/user", userRouter)
 app.use("/api/cart", cartRoute)
 app.get('/greet',(req ,res) => {
