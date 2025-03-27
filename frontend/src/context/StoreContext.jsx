@@ -9,7 +9,7 @@ const StoreContextProvider = (props) => {
     const [food_list , setFoodList] = useState([])
 
     //const url = "http://localhost:4000"
-    url = "https://fooddeliveryapp-kwlh.onrender.com"
+    const url = "https://fooddeliveryapp-kwlh.onrender.com"
     const addToCart =async (itemId) => {
         if(!cartItems[itemId]){
             setCartItems((prev)=>({...prev, [itemId]:1}))
