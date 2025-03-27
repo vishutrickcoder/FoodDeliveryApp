@@ -28,6 +28,11 @@ const addFood = async (req ,res) => {
 const foodList = async (req , res) => {
     try {
         let foods = await foodModel.find({})
+          // Append full backend URL to the image
+        foods = foods.map(food => ({
+            ...food._doc,
+            image: `https://fooddeliveryapp-kwlh.onrender.com/images/${food.image}`
+        }));
         res.json({sucess:true , Data : foods})
     } catch (error) {
         console.log(error)
