@@ -8,14 +8,14 @@ const addFood = async (req ,res) => {
     let image_filename =  `${req.file.filename}`
     const {foodname , description , price , category } = req.body
             
-    const imageUrl = `https://fooddeliveryapp-kwlh.onrender.com/images/${image_filename}`;
+    // const imageUrl = `https://fooddeliveryapp-kwlh.onrender.com/images/${image_filename}`;
 
     const food = await foodModel.create({
         foodname,
         description,
         price,
         category,
-        image :imageUrl
+        image :image_filename
     })
 
         res.json({sucess:true, message:"Food Added"})
@@ -29,10 +29,21 @@ const foodList = async (req , res) => {
     try {
         let foods = await foodModel.find({})
           // Append full backend URL to the image
-        foods = foods.map(food => ({
-            ...food._doc,
-            image: `https://fooddeliveryapp-kwlh.onrender.com/images/${food.image}`
-        }));
+
+         const backendUrl = "https://fooddeliveryapp-kwlh.onrender.com";
+         const updatedFoods = foods.map((item) => {
+            const imageUrl = item.image.startsWith("http")
+                ? item.image
+                : `${backendUrl}/images/${item.image}`;
+            
+            return {
+                ...item._doc,
+                image: imageUrl
+            };
+        });
+        
+            
+       
         res.json({sucess:true , Data : foods})
     } catch (error) {
         console.log(error)
