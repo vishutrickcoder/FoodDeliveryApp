@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import { connectDb } from './config/db.js'
 import foodRouter from './routes/foodRoute.js'
+const path = require('path');
 
 import dotenv from "dotenv";
 import userRouter from './routes/userRoute.js';
