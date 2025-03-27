@@ -7,13 +7,15 @@ const addFood = async (req ,res) => {
     try {
     let image_filename =  `${req.file.filename}`
     const {foodname , description , price , category } = req.body
+            
+    const imageUrl = `https://fooddeliveryapp-kwlh.onrender.com/images/${image_filename}`;
 
     const food = await foodModel.create({
         foodname,
         description,
         price,
         category,
-        image :image_filename
+        image :imageUrl
     })
 
         res.json({sucess:true, message:"Food Added"})
